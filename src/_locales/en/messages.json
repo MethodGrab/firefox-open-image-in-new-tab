@@ -1,0 +1,16 @@
+{
+  "extensionName": {
+    "message": "Open Image In New Tab",
+    "description": "Name of the extension."
+  },
+
+  "extensionDescription": {
+    "message": "Adds a context menu item to open images in a new tab",
+    "description": "Description of the extension."
+  },
+
+  "openImageInNewTabContextMenuLabel": {
+    "message": "Open image in new tab",
+    "description": "The label to use in the context menu for opening images in a new tab"
+  }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Image</title>
+	<style>
+		@media not print {
+			body {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				min-height: 100vh;
+				margin: 0;
+				padding: 0;
+				color: #eee;
+				background-color: #212121;
+				background-image: url('img/imagedoc-darknoise.png');
+			}
+
+			.rendered-image {
+				display: block;
+				flex: 0 0 auto;
+			}
+
+			.rendered-image.is-scaled {
+				max-width: 100vw;
+				max-height: 100vh;
+			}
+
+			.rendered-image.can-scale {
+				cursor: zoom-out;
+			}
+
+			.rendered-image.can-scale.is-scaled {
+				cursor: zoom-in;
+			}
+		}
+	</style>
+</head>
+<body>
+	<script src="/scripts/image.js"></script>
+</body>
+</html>

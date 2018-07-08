@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "name": "firefox-open-image-in-new-tab",
+  "version": "0.0.0",
+  "description": "",
+  "main": "",
+  "author": "MethodGrab",
+  "license": "ISC",
+  "scripts": {
+    "test": "yarn run lint && yarn run lint-ext",
+    "lint": "eslint \"**/*.js\"",
+    "lint-ext": "web-ext lint --source-dir src",
+    "start": "web-ext run --source-dir src --firefox=\"C:\\Program Files (x86)\\Firefox Developer Edition\\firefox.exe\" --firefox-profile=dev-edition-default",
+    "package": "web-ext build --source-dir src --ignore-files .DS_Store yarn.lock"
+  },
+  "devDependencies": {
+    "@methodgrab/eslint-config-standard": "^0.10.0",
+    "eslint": "^5.6.0",
+    "web-ext": "^2.9.1"
+  }
+}
