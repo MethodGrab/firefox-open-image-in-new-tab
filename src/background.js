@@ -1,7 +1,28 @@
-const isCtrlKey = xs => xs.map( x => x.toLowerCase() ).includes( 'ctrl' );
 const isShiftKey = xs => xs.map( x => x.toLowerCase() ).includes( 'shift' );
-
 const isDataUri = uri => uri.startsWith( 'data:' );
+
+
+const insertAtEnd = ( url, active ) => {
+	return browser.tabs.create({ url, active });
+};
+
+
+const insertAfterActiveTab = ( url, active ) => {
+	return browser.tabs.query({
+		active: true,
+		currentWindow: true,
+	}).then(tabs => {
+		if ( tabs[0] ) {
+			const index = tabs[0].index + 1;
+			return browser.tabs.create({ url, active, index });
+		}
+
+		return insertAtEnd( url, active );
+	}).catch(error => {
+		return insertAtEnd( url, active );
+	});
+};
+
 
 const openImage = ( info, tab ) => {
 	let url = info.srcUrl;
@@ -13,7 +34,15 @@ const openImage = ( info, tab ) => {
 	}
 
 	const active = !isShiftKey( info.modifiers );
-	browser.tabs.create({ url, active });
+
+	return browser.storage.sync.get( 'openAfterCurrentTab' )
+		.then(({ openAfterCurrentTab }) => {
+			if ( openAfterCurrentTab ) {
+				return insertAfterActiveTab( url, active );
+			}
+
+			return insertAtEnd( url, active );
+		});
 };
 
 

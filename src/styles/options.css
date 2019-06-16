@@ -1,0 +1,35 @@
+.form {
+	padding: 10px 0;
+}
+
+.form-field {
+	margin-bottom: 10px;
+}
+
+.form-input-checkbox-wrap {
+	display: flex;
+}
+
+.form-label {
+	display: block;
+}
+
+.form-hint {
+	display: block;
+	font-style: italic;
+}
+
+.form-input--text-like {
+	display: block;
+	width: 80%;
+	height: 2.5em;
+	margin-top: 6px;
+}
+
+.form-input[type="checkbox"] {
+	width: auto;
+	height: auto;
+	padding: 0;
+}
+
+.form-actions {}
