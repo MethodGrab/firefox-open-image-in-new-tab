@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Open Image In New Tab | Options</title>
+	<link rel="stylesheet" href="styles/options.css">
+</head>
+<body>
+	<form class="form">
+		<div class="form-field form-field--checkbox">
+			<div class="form-input-checkbox-wrap">
+				<label class="form-label" for="openAfterCurrentTab">Open image after current tab</label>
+				<input class="form-input" type="checkbox" id="openAfterCurrentTab" data-option>
+			</div>
+
+			<span class="form-hint">
+				If checked, the image will be opened after the current active tab, otherwise it will be opened at the end of the tabs list.
+			</span>
+		</div>
+
+		<footer class="form-actions">
+			<button class="btn" type="submit">Save</button>
+		</footer>
+	</form>
+
+	<script src="scripts/options.js"></script>
+</body>
+</html>
