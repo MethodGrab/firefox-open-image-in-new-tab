@@ -1,4 +1,4 @@
-# Open Image In New Tab
+# Open Image In New Tab [![Build Status](https://travis-ci.org/MethodGrab/firefox-open-image-in-new-tab.svg?branch=master)](https://travis-ci.org/MethodGrab/firefox-open-image-in-new-tab)
 > A Firefox extension that adds a context menu item to open images in a new tab.
 
 
