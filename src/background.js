@@ -2,9 +2,21 @@ const isShiftKey = xs => xs.map( x => x.toLowerCase() ).includes( 'shift' );
 const isDataUri = uri => uri.startsWith( 'data:' );
 
 
-const insertAfterActiveTab = ( url, active, openerTabId ) => {
-	// When openerTabId is specified, insertAfterActiveTab is the default behaviour.
-	return browser.tabs.create({ url, active, openerTabId });
+const insertAfterActiveTab = async ( url, active, openerTabId ) => {
+	try {
+		const tabs = await browser.tabs.query({ currentWindow: true, active: true });
+		let index = 1;
+
+		if ( tabs[0] ) {
+			index = tabs[0].index + 1;
+		}
+
+		return browser.tabs.create({ url, active, openerTabId, index });
+	} catch ( err ) {
+		console.error( err );
+		// Do **not** provide the openerTabId as that may affect the tab position.
+		return browser.tabs.create({ url, active });
+	}
 };
 
 
@@ -12,10 +24,10 @@ const insertAtEnd = async ( url, active, openerTabId ) => {
 	try {
 		const tabs = await browser.tabs.query({ currentWindow: true });
 		const index = tabs.length;
-		// Still provide the openerTabId so closing the tab from the end of the list returns focus to the opener tab.
 		return browser.tabs.create({ url, active, openerTabId, index });
 	} catch ( err ) {
-		// Do **not** provide the openerTabId because without a specific index that would insert the tab after the current tab instead of at the end.
+		console.error( err );
+		// Do **not** provide the openerTabId as that may affect the tab position.
 		return browser.tabs.create({ url, active });
 	}
 };
