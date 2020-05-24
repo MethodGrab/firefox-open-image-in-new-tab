@@ -21,24 +21,20 @@ const saveOptions = e => {
 };
 
 
-const restoreOptions = _ => {
-	const optionIds = optionFields().map(option => {
-		return option.id;
+const restoreOptions = async _ => {
+	const optionIds = optionFields().map( option => option.id );
+	const storedOptions = await browser.storage.sync.get( optionIds );
+
+	optionFields().forEach(option => {
+		const optionName = option.id;
+		const inputType = option.getAttribute( 'type' );
+
+		if ( inputType === 'checkbox' ) {
+			option.checked = storedOptions[optionName];
+		} else {
+			option.value = storedOptions[optionName];
+		}
 	});
-
-	browser.storage.sync.get( optionIds )
-		.then(storedOptions => {
-			return optionFields().forEach(option => {
-				const optionName = option.id;
-				const inputType = option.getAttribute( 'type' );
-
-				if ( inputType === 'checkbox' ) {
-					option.checked = storedOptions[optionName];
-				} else {
-					option.value = storedOptions[optionName];
-				}
-			});
-		});
 };
 
 document.addEventListener( 'DOMContentLoaded', restoreOptions );

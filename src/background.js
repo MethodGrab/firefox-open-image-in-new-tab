@@ -21,7 +21,7 @@ const insertAtEnd = async ( url, active, openerTabId ) => {
 };
 
 
-const openImage = ( info, tab ) => {
+const openImage = async ( info, tab ) => {
 	let url = info.srcUrl;
 
 	// Using a custom renderer for data URIs as `browser.tabs.create` doesnt allow these for security reasons
@@ -32,14 +32,12 @@ const openImage = ( info, tab ) => {
 
 	const active = !isShiftKey( info.modifiers );
 
-	return browser.storage.sync.get( 'openAfterCurrentTab' )
-		.then(({ openAfterCurrentTab }) => {
-			if ( openAfterCurrentTab ) {
-				return insertAfterActiveTab( url, active, tab.id );
-			}
+	const opts = await browser.storage.sync.get( 'openAfterCurrentTab' );
+	if ( opts.openAfterCurrentTab ) {
+		return insertAfterActiveTab( url, active, tab.id );
+	}
 
-			return insertAtEnd( url, active, tab.id );
-		});
+	return insertAtEnd( url, active, tab.id );
 };
 
 
