@@ -1,4 +1,10 @@
 # Open Image In New Tab [![Build Status](https://travis-ci.org/MethodGrab/firefox-open-image-in-new-tab.svg?branch=master)](https://travis-ci.org/MethodGrab/firefox-open-image-in-new-tab)
+
+[![Version](https://img.shields.io/amo/v/open-image-in-new-tab-new)][amo]
+[![Rating](https://img.shields.io/amo/rating/open-image-in-new-tab-new)][amo]
+[![Users](https://img.shields.io/amo/users/open-image-in-new-tab-new)][amo]
+[![Downloads](https://img.shields.io/amo/dw/open-image-in-new-tab-new)][amo]
+
 > A Firefox extension that adds a context menu item to open images in a new tab.
 
 
@@ -35,3 +41,6 @@ To publish a new version:
 
 ## Credits
 - Icon by Font Awesome ([Creative Commons Attribution 4.0 International license](https://fontawesome.com/license)).
+
+
+[amo]: https://addons.mozilla.org/en-GB/firefox/addon/open-image-in-new-tab-new
