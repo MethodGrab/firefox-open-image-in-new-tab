@@ -5,15 +5,25 @@ const optionFields = _ => {
 const saveOptions = e => {
 	e.preventDefault();
 
-	const options = optionFields().reduce(( acc, option ) => {
-		const inputType = option.getAttribute( 'type' );
-		let value = option.value;
+	const options = optionFields().reduce(( acc, input ) => {
+		const optionId = input.getAttribute( 'name' );
+		const inputType = input.getAttribute( 'type' );
 
-		if ( inputType === 'checkbox' ) {
-			value = option.checked;
+		switch ( inputType ) {
+			case 'checkbox':
+				acc[optionId] = input.checked;
+				break;
+
+			case 'radio':
+				if ( input.checked ) {
+					acc[optionId] = input.value;
+				}
+				break;
+
+			default:
+				acc[optionId] = input.value;
 		}
 
-		acc[option.id] = value;
 		return acc;
 	}, {} );
 
@@ -22,17 +32,26 @@ const saveOptions = e => {
 
 
 const restoreOptions = async _ => {
-	const optionIds = optionFields().map( option => option.id );
+	const optionIds = optionFields().map( input => input.getAttribute( 'name' ) );
 	const storedOptions = await browser.storage.sync.get( optionIds );
 
-	optionFields().forEach(option => {
-		const optionName = option.id;
-		const inputType = option.getAttribute( 'type' );
+	optionFields().forEach(input => {
+		const optionId = input.getAttribute( 'name' );
+		const inputType = input.getAttribute( 'type' );
 
-		if ( inputType === 'checkbox' ) {
-			option.checked = storedOptions[optionName];
-		} else {
-			option.value = storedOptions[optionName];
+		switch ( inputType ) {
+			case 'checkbox':
+				input.checked = storedOptions[optionId];
+				break;
+
+			case 'radio':
+				if ( input.value === storedOptions[optionId] ) {
+					input.checked = true;
+				}
+				break;
+
+			default:
+				input.value = storedOptions[optionId];
 		}
 	});
 };

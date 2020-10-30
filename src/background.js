@@ -1,6 +1,10 @@
 const isShiftKey = xs => xs.map( x => x.toLowerCase() ).includes( 'shift' );
 const isDataUri = uri => uri.startsWith( 'data:' );
 
+// :: Bool -> Bool -> Bool
+const isActive = ( switchToTabImmediatelyOption, modifierKeySelected ) => {
+	return (switchToTabImmediatelyOption && !modifierKeySelected) || (!switchToTabImmediatelyOption && modifierKeySelected);
+};
 
 const insertAfterActiveTab = async ( url, active, openerTabId ) => {
 	try {
@@ -42,9 +46,10 @@ const openImage = async ( info, tab ) => {
 		url = `/image.html#${info.srcUrl}`;
 	}
 
-	const active = !isShiftKey( info.modifiers );
+	const opts = await browser.storage.sync.get([ 'openAfterCurrentTab', 'switchToTabImmediately' ]);
+	const switchToTabImmediately = opts.switchToTabImmediately === 'YES';
+	const active = isActive( switchToTabImmediately, isShiftKey( info.modifiers ) );
 
-	const opts = await browser.storage.sync.get( 'openAfterCurrentTab' );
 	if ( opts.openAfterCurrentTab ) {
 		return insertAfterActiveTab( url, active, tab.id );
 	}
