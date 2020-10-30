@@ -13,7 +13,7 @@ const insertAfterActiveTab = async ( url, active, openerTabId ) => {
 
 		return browser.tabs.create({ url, active, openerTabId, index });
 	} catch ( err ) {
-		console.error( err );
+		console.error( err ); // eslint-disable-line no-console
 		// Do **not** provide the openerTabId as that may affect the tab position.
 		return browser.tabs.create({ url, active });
 	}
@@ -26,7 +26,7 @@ const insertAtEnd = async ( url, active, openerTabId ) => {
 		const index = tabs.length;
 		return browser.tabs.create({ url, active, openerTabId, index });
 	} catch ( err ) {
-		console.error( err );
+		console.error( err ); // eslint-disable-line no-console
 		// Do **not** provide the openerTabId as that may affect the tab position.
 		return browser.tabs.create({ url, active });
 	}

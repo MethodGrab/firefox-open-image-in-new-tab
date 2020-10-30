@@ -12,6 +12,7 @@ module.exports = {
 	},
 
 	rules: {
+		'no-console': 'warn',
 		'no-param-reassign': 'off',
 		'no-shadow': [ 'error', {
 			allow: [ '_' ],
