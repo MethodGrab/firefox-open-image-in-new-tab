@@ -10,7 +10,8 @@
 
 ## Options
 
-- Hold down <kbd>shift</kbd> when selecting 'Open image in new tab' from the context menu to load the image in the background rather than the foreground.
+- Hold down <kbd>shift</kbd> when selecting "_Open image in new tab_" from the context menu to invert the default tab active behaviour.  
+  i.e. if "_Switch to image tab immediately_" is set to "_Yes_" then holding <kbd>shift</kbd> will load the image tab in the background rather than the foreground.
 
 
 ## Restrictions

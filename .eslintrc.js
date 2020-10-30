@@ -8,12 +8,18 @@ module.exports = {
 	env: {},
 
 	globals: {
-		'browser': true,
+		browser: true,
 	},
 
 	rules: {
-		'no-param-reassign'    : 'off',
-		'no-shadow'            : [ 'error', { 'allow': [ '_' ] } ],
-		'no-unused-expressions': [ 'warn', { allowShortCircuit: true, allowTernary: true } ],
+		'no-console': 'warn',
+		'no-param-reassign': 'off',
+		'no-shadow': [ 'error', {
+			allow: [ '_' ],
+		}],
+		'no-unused-expressions': [ 'warn', {
+			allowShortCircuit: true,
+			allowTernary: true,
+		}],
 	},
 };

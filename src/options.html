@@ -7,16 +7,38 @@
 	<link rel="stylesheet" href="styles/options.css">
 </head>
 <body>
-	<form class="form">
+	<form id="options-form" class="form">
 		<div class="form-field form-field--checkbox">
 			<div class="form-input-checkbox-wrap">
 				<label class="form-label" for="openAfterCurrentTab">Open image after current tab</label>
-				<input class="form-input" type="checkbox" id="openAfterCurrentTab" data-option>
+				<input class="form-input" type="checkbox" name="openAfterCurrentTab" id="openAfterCurrentTab" data-option>
 			</div>
 
-			<span class="form-hint">
+			<div class="form-hint">
 				If checked, the image will be opened after the current active tab, otherwise it will be opened at the end of the tab list.
-			</span>
+			</div>
+		</div>
+
+		<div class="form-field">
+			<div class="form-label">Switch to image tab immediately</div>
+
+			<div class="form-input-radio-options">
+				<div class="form-input-radio-option">
+					<input class="form-input" type="radio" name="switchToTabImmediately" id="switchToTabImmediately_YES" value="YES" data-option>
+					<label for="switchToTabImmediately_YES">Yes</label>
+				</div>
+
+				<div class="form-input-radio-option">
+					<input class="form-input" type="radio" name="switchToTabImmediately" id="switchToTabImmediately_NO" value="NO" data-option checked>
+					<label for="switchToTabImmediately_NO">No</label>
+				</div>
+			</div>
+
+			<div class="form-hint">
+				When opening the image in a new tab, should the browser switch to that tab immediately or load it in the background?
+				<br>
+				You can invert this default behaviour by holding down the <kbd>shift</kbd> key when selecting "Open image in new tab" from the context menu.
+			</div>
 		</div>
 
 		<footer class="form-actions">
