@@ -26,8 +26,6 @@ Testing unsigned extensions only works with [non-release builds](https://develop
 1. `npm install`
 1. `npm run start` to load Firefox Developer Edition with the extension installed. Making changes to the code will automatically reload the extension.
 
-**Note: `npm run start` assumes you're on Windows with Firefox Developer Edition installed in the default directory. If not, modify the `start` script path in `package.json` as needed.**
-
 
 ## Release Process
 
