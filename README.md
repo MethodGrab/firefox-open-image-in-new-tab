@@ -1,6 +1,6 @@
 # Open Image In New Tab
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/MethodGrab/firefox-open-image-in-new-tab/CI?style=flat-square)](https://github.com/MethodGrab/firefox-open-image-in-new-tab/actions/workflows/CI.yaml)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/MethodGrab/firefox-open-image-in-new-tab/CI.yaml?branch=master&style=flat-square)](https://github.com/MethodGrab/firefox-open-image-in-new-tab/actions/workflows/CI.yaml)
 [![Version](https://img.shields.io/amo/v/open-image-in-new-tab-new?style=flat-square)][amo]
 [![Rating](https://img.shields.io/amo/rating/open-image-in-new-tab-new?style=flat-square)][amo]
 [![Users](https://img.shields.io/amo/users/open-image-in-new-tab-new?style=flat-square)][amo]
